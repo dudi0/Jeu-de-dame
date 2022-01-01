@@ -44,3 +44,4 @@ Dans le main,
 Dans server, 
 - fonctions d'initialisation
 - 
+Rien ne marche ça clc

@@ -2,11 +2,15 @@
 #include <stdlib.h>
 #include <time.h>
 #include "header.h"
+#include "server.h"
 
 int main()
 {
-	srand(time(NULL));
+	//init_game;
 	system("clear");
-	menu();
+	
+	init_server();
+
+	//menu();
 	return 0;
 }

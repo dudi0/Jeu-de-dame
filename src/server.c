@@ -60,8 +60,8 @@ void init_server()
  	serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
  	serv_addr.sin_port = htons(PORT); 
 
-    //Connexion/Liaison avec la socket ?
- 	if (bind(sockfd,(struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0)
+    //Connexion/Liaison avec la socket
+ 	if (bind(sockfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0)
  	{
  		printf("Error binding!\n");
   		exit(1);
@@ -105,9 +105,9 @@ void init_server()
         //Cas d'une nouvelle connexion
         if (FD_ISSET(sockfd, &readfds))
         {
-            if ((newsock = accept(sockfd, (struct sockaddr *)&serv_addr, &addr_len)) < 0)
+            if ((newsock = accept(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr))) < 0)
             {
-                printf("Erreur de connexion");
+                printf("Erreur de connexion\n");
                 exit(EXIT_FAILURE);
             }
             printf("Connexion : %s:%d\n", inet_ntoa(serv_addr.sin_addr), ntohs(serv_addr.sin_port));

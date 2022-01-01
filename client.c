@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>  
@@ -20,7 +21,7 @@ void cli_input(int sockfd, char * msg)
     }
 }
 
-void init_client() 
+int main() 
 {
     int sockfd;
     struct sockaddr_in serv_addr;
@@ -35,14 +36,20 @@ void init_client()
 
     memset(&serv_addr, 0, sizeof(serv_addr));
     serv_addr.sin_family = AF_INET;
- 	serv_addr.sin_addr.s_addr = inet_addr(INADDR_ANY); 
+ 	serv_addr.sin_addr.s_addr = htonl(INADDR_ANY); 
  	serv_addr.sin_port = htons(PORT);
+    
     addr_len = sizeof(serv_addr);
-
     if(connect(sockfd, (struct sockaddr *) &serv_addr, addr_len) < 0)
     {
         printf("Echec de la connexion au serveur\n");
         exit(EXIT_FAILURE);
     }
     printf("Connexion au serveur réussie\n");
+
+    while(1){}
+    //start_game();
+
+    close(sockfd);
+    exit(EXIT_SUCCESS);
 }
