@@ -15,7 +15,7 @@
 #define BUF_SIZE 1024 
 #define MAX_CLI 10 
 
-void main()
+void init_server()
 {
     int i;
     int sockfd, newsock;

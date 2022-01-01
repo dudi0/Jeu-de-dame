@@ -2,7 +2,7 @@ CC=gcc
 FLAGS=-Wall
 SOURCES=$(wildcard src/*.c)
 OBJECTS=$(SOURCES:src/%.c=build/%.o)
-EXECUTABLE=dame
+EXECUTABLE=dames
 
 .PHONY= all clean build
 .DEFAULT=all

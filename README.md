@@ -1,4 +1,5 @@
 # Jeu-de-dame
+[1]F.
 Pour faire le jeu de dame je m'inspire du jeu de taquin qu'on avait fait l'année dernière.
 Pour le moment surtout pour :
 - MakeFile, 
@@ -31,3 +32,15 @@ Les pions peuvent avancer que d'une case en diagonale.
 Ils ne peuvent pas aller en arrière
 Pour 'manger' un pion adverse il faut que la case (dans la ligne diagonale) après 
 le pion A doit être vide. Le pion peut donc ensuite sauter sur le pion A et le manger.
+
+
+[2]E.
+Dans le main,
+- On initialise le serv et le cli
+- On lance le jeu
+- On ferme si un joueur déco ou si partie finie
+- Et puis quoi ? Qui joue ? Les spec ? On demande si revanche ? On relance tout ? 
+
+Dans server, 
+- fonctions d'initialisation
+- 
