@@ -10,7 +10,7 @@ void menu()
     switch (afficheMenu()) 
     {
     case 1:
-        printf("Vous avez choisi de Commencer à jouer !\n\n");
+        printf("Vous avez choisi de commencer à jouer !\n\n");
         start(1);
         break; 
  
@@ -18,14 +18,14 @@ void menu()
         system("clear");
         
         printf("Vous avez choisi lire les Règles du jeu !\n\n");
-        printf("Mettre règles du jeu du jeu de dame\n"
+        printf("Déplacez vous en diagonal sur les cases vides.\n Mangez un pion adverse si une case libre le précède.\n Mangez tous les pions adverses.\n"
 
 		"\nÀ vous de jouer !\n");
         menu();
 	break;
  
     case 3:
-        printf("Vous avez choisi de continuer depuis la sauvegarde !\n");
+        printf("Vous avez choisi de continuer depuis la sauvegarde !\n Mais ce n'est pas du tout implémenté :/\n");
         start(2);
 	break;
 
@@ -40,7 +40,7 @@ void menu()
 	break;
  
     case 6:
-        printf("Appuyez de nouveau sur 6 pour confirmer vouloir quitter notre super jeu D:\n"); 
+        printf("Appuyez de nouveau sur 6 pour confirmer.\n"); 
         scanf("%d",&s);
 	if(s==6)
 	{
@@ -63,95 +63,16 @@ void menu()
 
 
 
-void mouvement (s_grille * g)
+void mouvement (s_grille * g, struct pion p, char *to)
 {
-	char dir;
-	printf("Votre coup : ");
-	scanf("%c",&dir);
-	if((dir=='d')&&((g->y-1)>=0))
-	{
-		swap(g,g->x,g->y-1);
-    		g->y=g->y-1;
-	}
-	else if((dir=='g')&&((g->y+1)<g->taille))
-	{
-		swap(g,g->x,g->y+1);
-    		g->y=g->y+1;
-	}
-	else if((dir=='b')&&((g->x-1)>=0))
-	{
-		swap(g,g->x-1,g->y);
-    		g->x=g->x-1;
-	}
-	else if((dir=='h')&&((g->x+1)<g->taille))
-	{
-		swap(g,g->x+1,g->y);
-    		g->x=g->x+1;
-	}
-	else
-	{
-		printf("\n");
-	}
+	//Change le pion de place
 }
 
 int victoire(s_grille * grid)
 {	
-	int i, j;
-	//création d'une grille identité à comparer avec la grille courante
-	int ** identite = tabToGrid(grid->taille, permutationIdentite(grid->taille*grid->taille));
-	for(i=0;i<grid->taille;i++)
-	{
-		for(j=0;j<grid->taille;j++)
-		{
-			if(identite[i][j]!=grid->tabValeurs[i][j])
-			{
-				libereTab(identite,grid->taille);
-				return 0 ; //0 vaut "faux"
-			}
-		}
-	}
-	libereTab(identite, grid->taille);
-	
-	return 1; //1 vaut true
+	//Si nombre de pions d'un joueur = 0 alors victoire
 }
 
-int charge(s_permutation * permut)
-{
-	int i;
-	char * saveBloc = recupFile();
-	int nGrid=tailleGrid(saveBloc);
-	permut->n=nGrid*nGrid;
-
-    	const char * delim =";";
-    	permut->tab[0]= atoi(strtok(saveBloc, delim));
-    
-    	for(i=1;i<permut->n;i++)
-    	{
-        	permut->tab[i]=atoi(strtok(NULL, delim));
-		i++;
-    	}
-	return nGrid;
-}
-
-void sauve(s_grille * grid) 
-{
-        FILE *fichier = fopen("sauve.txt", "w+");
-	if(fichier==NULL){exit(0);}
-
-        int i,j;
-
-        for(i=0; i<grid->taille; i++)
-        {
-                for(j=0; j<grid->taille; j++)
-                {
-                        fprintf(fichier, "%d;", grid->tabValeurs[i][j]);
-                }
-        }
-        rewind(fichier); 
-
-        fclose(fichier);
-	
-}
 
 
 void start()
