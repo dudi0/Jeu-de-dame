@@ -27,8 +27,6 @@ void menu();
 void start();
 void mouvement(s_grille * g);
 int victoire(s_grille * grid);
-void sauve(s_grille *grid);
-int charge(s_permutation *permut);
 
 //outils.c
 int afficheMenu();
@@ -44,6 +42,5 @@ int tailleGrid(char * buffer);
 int pariteCaseVide(s_permutation permut);
 int pariteTranslations(s_permutation permut);
 int * permutationIdentite(int n);
-int testSolubilite(s_permutation permut);
 int testValidite(s_permutation permut);
 int * permute(s_permutation permut);
